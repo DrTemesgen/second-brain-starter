@@ -36,5 +36,5 @@ skipped.
 
 ## Close
 
-"Module 70 {{saved / skipped}}. Next: Agent Roster. Continue now, or pick
+"Module 70 saved (or skipped). Next: Agent Roster. Continue now, or pick
 this up next session?"

@@ -36,9 +36,14 @@ Module 999 includes a "Funding & partnerships" section on the Dashboard.
 
 Fill `me/projects.md` — one category-table section per real category they
 named, plus the "Conventions they use" closing section (naming conventions,
-draft-vs-final locations, IP boundaries stated plainly). Also record the
-sensitive-data-categories answer in `state.json` (as `sensitiveDataCategories`)
-for Module 999 to drop into `CLAUDE.md` rule 9 later.
+draft-vs-final locations, IP boundaries stated plainly). Also record two
+answers in `state.json`, since Module 999 may run sessions later and
+can't re-derive either from `projects.md` alone:
+- `sensitiveDataCategories` — for `CLAUDE.md` rule 9.
+- `seeksFunding` (`true`/`false`) — the grant/fundraising answer, for
+  whether Module 999 includes the Dashboard's "Funding & partnerships"
+  section. Without persisting this, that decision is lost the moment
+  this module's own conversation ends.
 
 ## Close
 

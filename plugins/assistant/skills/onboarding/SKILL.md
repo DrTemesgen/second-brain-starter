@@ -177,6 +177,7 @@ done (not just "not explicitly skipped") before generating the final
   "yourName": null,
   "yourEmail": null,
   "sensitiveDataCategories": null,
+  "seeksFunding": null,
   "completedModules": [],
   "skippedModules": [],
   "inProgressModule": "00_orientation",

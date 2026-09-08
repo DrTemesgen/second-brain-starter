@@ -23,37 +23,44 @@ actually ship with is not.
 fields are supposed to carry his real name/email (see
 `docs/ARCHITECTURE.md` and Module 00's own explanation of why) — that's
 `plugin.json`, `marketplace.json`, `LICENSE`, and the clone URL in
-`docs/SETUP.md`. The name/email sweeps below will correctly hit exactly
-those four places and nowhere else; that's a PASS, not a finding.
+`docs/SETUP.md`. **This checklist file itself is also an expected hit**
+for the name/org/contact sweeps below, since it necessarily quotes the
+patterns it searches for — that's not a fifth leak, it's the file
+matching its own regex. The commands below exclude this file so a clean
+run really does mean zero matches; if you run the patterns some other
+way, expect this file to show up and don't count it.
 
 ## Grep sweep
 
-Run from the repo root, case-insensitive (`rg -i` shown; any equivalent
-grep works). Every one of these should return **no matches outside the
-four author-attribution files above** (and none at all for the org/path/
-infrastructure sweeps, which have no legitimate hit anywhere):
+Run from the repo root, case-insensitive (`rg -i` shown, with this file
+excluded via `--glob`; if your grep doesn't support that flag, pipe
+through `| grep -v VERIFICATION-CHECKLIST` instead — same effect). Every
+one of these should return **no matches outside the four
+author-attribution files named above**:
 
 ```bash
+EXCL="--glob=!docs/VERIFICATION-CHECKLIST.md"
+
 # Author's name — expected ONLY in plugin.json, marketplace.json, LICENSE
-rg -i "temesgen|endalew|legesse|drtemesgen"
+rg -i $EXCL "temesgen|endalew|legesse|drtemesgen"
 
 # The originating system's own name — everything here should say
 # {{SYSTEM_NAME}}, never a specific chosen name
-rg -i "\belroi\b"
+rg -i $EXCL "\belroi\b"
 
 # Contact info — expected ONLY in plugin.json, marketplace.json
-rg -iE "dolce\.temesgen@gmail\.com|@aslm\.org|@sphmmc\.edu\.et"
-rg -iE "\+251[ -]?9"
+rg -iE $EXCL "dolce\.temesgen@gmail\.com|@aslm\.org|@sphmmc\.edu\.et"
+rg -iE $EXCL "\+251[ -]?9"
 
-# Named organizations that shouldn't appear anywhere in a generic kit
-rg -iE "\bASLM\b|\bADHA\b|\bADHN\b|\bSPHMMC\b|Africa CDC|\bMERQ\b|\bBBI\b"
+# Named organizations — no legitimate hit anywhere, including this file
+rg -iE $EXCL "\bASLM\b|\bADHA\b|\bADHN\b|\bSPHMMC\b|Africa CDC|\bMERQ\b|\bBBI\b"
 
 # Specific figures that shouldn't be live defaults anywhere
-rg -noE "\$[0-9][0-9,.]*[kKmM]?"        # spot-check every hit by hand
-rg -iE "[0-9]{1,3},?[0-9]{3}\+? (followers|learners|countries|seats)"
+rg -noE "\$[0-9][0-9,.]*[kKmM]?" $EXCL   # spot-check every hit by hand
+rg -iE $EXCL "[0-9]{1,3},?[0-9]{3}\+? (followers|learners|countries|seats)"
 
 # Filesystem paths specific to one machine/person
-rg -iE "D:\\\\HQ|D:\\\\ASLM|D:\\\\Noochi|C:\\\\Users\\\\[a-z]+\\\\"
+rg -iE $EXCL "D:\\\\HQ|D:\\\\ASLM|D:\\\\Noochi|C:\\\\Users\\\\[a-z]+"
 
 # Infrastructure that should never travel between machines
 rg -iE "([0-9]{1,3}\.){3}[0-9]{1,3}"    # spot-check every IP hit by hand
@@ -63,7 +70,7 @@ rg -iE "ssh\s+[a-z0-9_-]+@"
 # expected ONLY the author's gmail in the two files named above
 rg -iE "[a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)"
 rg -iE "-----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----"
-rg -iE "(api|access)[_-]?key|secret[_-]?key" -- --glob '!docs/VERIFICATION-CHECKLIST.md'
+rg -iE $EXCL "(api|access)[_-]?key|secret[_-]?key"
 ```
 
 Run this from a **fresh context** if you're the one who authored or edited
@@ -102,6 +109,10 @@ its own blind spots rather than genuinely re-verifying.
       gets cleanly removed rather than left dangling in `Constitution.md`).
 - [ ] `writer` and `researcher`, invoked against a still-empty dossier,
       report missing context rather than fabricating personal details.
+- [ ] `verify`, run against a fully-completed setup, reports clean with
+      no false positives on `me/feedback.md` or `People/*.md`'s
+      permanent template tokens; run against a deliberately incomplete
+      one, it correctly names what's missing and which module owns it.
 - [ ] The credential-sweep hook (`hooks.json`) actually fires — try a
       Bash command like `find . -name "*.pem"` combined with a password
       keyword and confirm it's denied. It depends on `jq` and POSIX

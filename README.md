@@ -11,6 +11,7 @@ This is a **starter kit**, not a finished product. Everything in it ships empty 
 - **A dashboard** — one file that's the front door to your day: what's next, what's waiting on your OK, live deadlines, everything else indexed underneath it.
 - **A dispatch ritual and cost-control guide** — the actual discipline (session hygiene, model-tier routing, one-task-one-session) that keeps this cheap to run, written up front instead of learned the expensive way.
 - **Two starter agents** (`writer`, `researcher`) and a place to build your own — the onboarding interview helps you design a roster from your actual recurring work rather than handing you someone else's.
+- **A `verify` health-check** — a read-only skill that confirms nothing's broken (no leftover `{{PLACEHOLDER}}` tokens, all the expected files present) any time you want to check, without re-running the whole interview.
 
 ## Quick start
 

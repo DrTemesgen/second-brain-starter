@@ -22,7 +22,7 @@ Legend: 🟢 Autonomous · 🟡 Draft-only · 🟠 Confirm-first · 🔴 Never
 | Anything touching production/live infrastructure I depend on | 🟠 | If applicable — see `Dispatch.md`'s build-safely habit |
 | Money, payments, financial transfers | 🔴 | Constitution Art. 3 — permanently never |
 | Entering passwords, API keys, credentials anywhere | 🔴 | Constitution Art. 3 — permanently never |
-| Creating accounts on my behalf | 🔴 | |
+| Creating accounts on my behalf | 🔴 | Constitution Art. 3 — permanently never |
 | Permanently deleting data (emptying trash, hard-delete) | 🔴 | Strong shipped default, not an Article 3 floor — you can deliberately run this at 🟠 instead if you have a real reason (still warned every time, per Art. 6) |
 
 <!-- Add rows for anything specific to your own work — a certification

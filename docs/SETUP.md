@@ -16,10 +16,16 @@ have your own history from the start.
 ```bash
 claude plugin validate ./plugins/assistant
 claude plugin validate .
+jq --version
 ```
 
-Fix anything that reports invalid before continuing — a manifest error here
-means the plugin won't load at all.
+Fix anything the first two report invalid before continuing — a manifest
+error here means the plugin won't load at all. The `jq` check is a
+different kind of failure: everything still installs and works without
+it, but the credential-sweep hook depends on it and fails *silently* if
+it's missing (most common on Windows without Git Bash or WSL) — better
+to know that now than to believe a security guard is active when it
+isn't. Install `jq` if you want that guard working.
 
 ## 3. Add it as a local marketplace and install
 
@@ -53,14 +59,25 @@ start the onboarding interview. Say yes, and work through it at your own
 pace — every module can be paused and resumed, and several (Finance
 especially) are explicitly fine to skip.
 
+**Roughly how long this takes:** 13 modules, one question at a time, real
+conversation rather than a form — figure 60-90 minutes total if you did
+it all in one sitting, though almost nobody does. Module 00 alone is
+under 5 minutes, and the system is fully safe (conservative defaults
+active, nothing destructive possible) from the moment that one finishes —
+everything after that is refinement, on whatever schedule you want across
+as many sessions as you want.
+
 ## 5. Confirm it worked
 
 After onboarding finishes, check:
 
 - `~/.claude/CLAUDE.md` exists and reflects your real answers (not
   placeholder tokens).
-- `~/.claude/me/*.md` — all 10 files have real content, or an explicit,
-  intentional skip note (Finance/Health if you opted out).
+- `~/.claude/me/*.md` — most of the 10 files should have real content;
+  two are correctly *not* filled by onboarding itself and that's not a
+  failure: `feedback.md` starts empty and fills in as you actually give
+  feedback later, and `agents-guide.md` can legitimately say "none yet"
+  if Module 80 didn't build a custom roster.
 - Your system home (wherever you said it should live) has a real
   `Dashboard.md` and a constitution folder with your actual settings.
 
@@ -76,11 +93,13 @@ completed, that's worth fixing by hand or re-running the relevant module.
   `~/.claude/_onboarding/state.json` — it should show which module was
   last in progress. If it's missing entirely, onboarding will just start
   fresh from Module 00; nothing else breaks.
-- **Something references a `{{PLACEHOLDER}}` that never got filled:** most
-  likely a module was skipped rather than completed — re-run it, or fill
-  the placeholder by hand. Module 999's own final step sweeps for exactly
-  this, so re-running Assembly (even with everything else already done)
-  is usually enough to catch a stray one.
+- **Something references a `{{PLACEHOLDER}}` that never got filled:**
+  ask to `/verify` first — it's a quick, read-only check that tells you
+  exactly what's unresolved and which module owns it, without re-running
+  anything. Then re-run that specific module, or fill the placeholder by
+  hand. (Re-running the whole of Assembly also works and is safe to do —
+  it checks for existing files before touching anything — but `verify`
+  is faster for just checking.)
 - **Onboarding can't find its own templates / asks where you put the kit:**
   this means it couldn't infer its own location automatically — just tell
   it the path from step 1. It'll remember (`kitRoot` in `state.json`) and

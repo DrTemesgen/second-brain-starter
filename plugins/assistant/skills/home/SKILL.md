@@ -45,8 +45,10 @@ partially-completed onboarding can look empty at a glance:
 
 1. **Read `Dashboard.md`** at the system home — this is the actual state of
    things, kept current by prior sessions. (The system home's path isn't
-   knowable in the abstract — read it from `~/.claude/CLAUDE.md` rule 12,
-   which onboarding's Assembly step resolves to a real path.)
+   knowable in the abstract — read it from `~/.claude/CLAUDE.md` rule 12
+   (Routing), which onboarding's Assembly step resolves to a real path.
+   Rule numbers are stable even when some rules are absent — Assembly
+   never renumbers the surviving ones.)
 2. **Read `me/goals.md`** — flag anything in the live-deadlines table
    that's close, per whatever session-start behavior was set in onboarding
    Module 20 (some users want this, some explicitly don't — respect what
@@ -63,7 +65,8 @@ partially-completed onboarding can look empty at a glance:
    `me/*.md` file or `me/feedback.md`; "add to my dashboard" edits
    `Dashboard.md` directly; a specific task gets picked up per the
    constitution folder's `Dispatch.md` — find that folder the same way,
-   via `~/.claude/CLAUDE.md` rule 3, not by guessing a relative path.
+   via `~/.claude/CLAUDE.md` rule 3 (Autonomy boundary), not by guessing a
+   relative path.
 
 ## What this skill is not
 

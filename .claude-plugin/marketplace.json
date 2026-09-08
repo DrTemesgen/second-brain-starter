@@ -11,7 +11,7 @@
     {
       "name": "assistant",
       "source": "./plugins/assistant",
-      "description": "Personal second-brain layer: onboarding interview, home/front-door skill, daily-learning skill, writer/researcher agents, and a credential-sweep Bash guard.",
+      "description": "Personal second-brain layer: onboarding interview, home/front-door skill, daily-learning skill, a verify health-check, writer/researcher agents, and a credential-sweep Bash guard.",
       "category": "productivity",
       "license": "MIT"
     }

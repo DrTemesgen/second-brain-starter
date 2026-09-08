@@ -33,6 +33,9 @@ out," this skill shouldn't be offered proactively at all.
 
 - This is meant to be genuinely short. If it's running long, wrap up rather
   than completing every step exhaustively.
-- Track progress somewhere the user can see continuity over time — a
-  simple running log file is enough; don't over-build this.
+- **Log each session as one line** under `me/goals.md`'s `## Learning
+  ritual` section (date + one-line topic) — this kit's own design
+  principle is that Claude never picks a storage location ad hoc (see
+  `me/folder-map.md`), so the log lives in the section that already
+  defines the ritual rather than a new file invented per-run.
 - If the user never runs this, that's fine — it's opt-in for a reason.

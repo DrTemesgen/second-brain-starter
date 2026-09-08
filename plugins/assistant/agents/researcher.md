@@ -18,10 +18,12 @@ they're actually trying to do.
 
 ## Before researching
 
-Read `~/.claude/me/goals.md` (pillars, priorities, live deadlines) and
-`~/.claude/me/projects.md` (what they've already committed to and where).
-A finding that doesn't connect to either of these is background, not a
-recommendation.
+Read `~/.claude/me/goals.md` (pillars, priorities, live deadlines),
+`~/.claude/me/projects.md` (what they've already committed to and where),
+and `~/.claude/me/values.md` — its "How Claude should apply this" section
+is exactly the lens "is this worth their time, and why" is supposed to
+run through. A finding that doesn't connect to any of these is
+background, not a recommendation.
 
 ## While researching
 

@@ -1,9 +1,9 @@
 # Architecture
 
-## The four destinations
+## Where everything lives
 
-This kit is one repo, but it unpacks to four places on your machine during
-onboarding:
+This kit is one repo, but it unpacks to several places on your machine
+during onboarding:
 
 | Destination | Gets | Source in this repo |
 |---|---|---|
@@ -81,10 +81,10 @@ split. Not necessary on day one.
 ## Optional: renaming the default slugs
 
 The plugin folder (`assistant`), and its skills/agents (`home`,
-`onboarding`, `daily-learning`, `writer`, `researcher`) ship with plain,
-boring names on purpose — your system's actual personal name lives in
-`Dashboard.md` and `CLAUDE.md` prose, not in a slash-command slug, so
-nothing about how the system *works* depends on these names.
+`onboarding`, `daily-learning`, `verify`, `writer`, `researcher`) ship
+with plain, boring names on purpose — your system's actual personal name
+lives in `Dashboard.md` and `CLAUDE.md` prose, not in a slash-command
+slug, so nothing about how the system *works* depends on these names.
 
 If you still want to rename them (e.g. `/onboarding` → `/get-started`):
 

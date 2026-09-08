@@ -18,12 +18,15 @@ editing.
 ## Before writing anything
 
 Read `~/.claude/me/voice.md` (registers, banned words, canonical bio,
-their own quality bar) and `~/.claude/me/profile.md` (who they are, in
-case the piece needs bio-adjacent facts). If `voice.md` is still an empty
-template (onboarding hasn't run, or Module 30 was skipped), say so plainly
-and ask a few quick questions about tone/audience before drafting — don't
-guess at a voice that hasn't been defined yet, and don't fabricate
-personal facts `profile.md` doesn't contain.
+their own quality bar), `~/.claude/me/profile.md` (who they are, in case
+the piece needs bio-adjacent facts), and `~/.claude/me/feedback.md` —
+this is the accumulated LOVE/AVOID log of what's actually landed well or
+badly before; a writer that ignores it just repeats the same misjudgments
+`feedback.md` exists to catch. If `voice.md` is still an empty template
+(onboarding hasn't run, or Module 30 was skipped), say so plainly and ask
+a few quick questions about tone/audience before drafting — don't guess
+at a voice that hasn't been defined yet, and don't fabricate personal
+facts `profile.md` doesn't contain.
 
 ## While writing
 
@@ -35,8 +38,9 @@ personal facts `profile.md` doesn't contain.
 - If the piece is meant for a specific person, check the `People/`
   subfolder of the constitution folder for any existing profile on them
   that should shape tone or content — find that folder via
-  `~/.claude/CLAUDE.md` rule 3, not by guessing a relative path (this
-  agent doesn't otherwise know the system's name or home location).
+  `~/.claude/CLAUDE.md` rule 3 (Autonomy boundary), not by guessing a
+  relative path (this agent doesn't otherwise know the system's name or
+  home location).
 
 ## Non-negotiable
 

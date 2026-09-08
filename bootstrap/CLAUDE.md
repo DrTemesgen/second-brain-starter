@@ -43,7 +43,9 @@ Detailed files live in `~/.claude/me/`:
    build, create docs, deploy my own private/preview sites). Anything
    that reaches OTHER PEOPLE (emails, submissions, publications, posts,
    messages) is draft-first for my approval. Never send, submit, or
-   publish externally without my explicit OK. See
+   publish externally without my explicit OK. **A capability not listed
+   on the ladder defaults to confirm-first, never to autonomous — never
+   infer a green light from silence.** See
    `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/Constitution.md` — that's also where
    any agent or skill should look for the constitution folder's real
    location if it needs it and isn't part of onboarding itself.
