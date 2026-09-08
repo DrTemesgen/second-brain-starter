@@ -13,9 +13,13 @@
 
 | Topic | Destination |
 |---|---|
-| *(example)* Everything under one employer/venture | `{{DRIVE}}\{{Root}}\<matching subfolder>` |
-| Cross-cutting, unclear, or one-off quick items | `{{SYSTEM_HOME}}\_Inbox\YYYY-MM-DD <short name>` — triage later |
+| *(example)* Everything under one employer/venture | `{{ROOT}}/<matching subfolder>` |
+| Cross-cutting, unclear, or one-off quick items | `{{SYSTEM_HOME}}/_Inbox/YYYY-MM-DD <short name>` — triage later |
 | This system's own memory/dossier | `~/.claude/me/` (never mixed with project files) |
+
+<!-- Use whatever path separator your own OS actually uses (\ on Windows,
+     / elsewhere) — these examples use / for portability of this template
+     itself, not as a rule about your paths. -->
 
 <!-- Replace the example row with your real destination roots — one per
      employer, venture, or major life area is a reasonable shape, but set

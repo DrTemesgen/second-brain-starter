@@ -25,12 +25,20 @@ Module 999 includes a "Funding & partnerships" section on the Dashboard.
 - **Recurring work types** — pay attention here specifically for Module 80
   (Agent Roster): what kinds of tasks come up again and again? This is the
   raw material that module will turn into an actual agent roster.
+- **Sensitive data categories** — what kinds of data on this machine
+  should be treated as sensitive by default (client records, health data,
+  exam/assessment material, financial figures, another person's private
+  information, or "nothing special")? This becomes rule 9 (Privacy &
+  security) of their generated `CLAUDE.md` — without a real answer here
+  that rule ships with an unresolved token.
 
 ## What gets written
 
 Fill `me/projects.md` — one category-table section per real category they
 named, plus the "Conventions they use" closing section (naming conventions,
-draft-vs-final locations, IP boundaries stated plainly).
+draft-vs-final locations, IP boundaries stated plainly). Also record the
+sensitive-data-categories answer in `state.json` (as `sensitiveDataCategories`)
+for Module 999 to drop into `CLAUDE.md` rule 9 later.
 
 ## Close
 

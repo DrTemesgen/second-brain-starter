@@ -25,6 +25,12 @@ where thin answers matter most to catch.
   point them at `constitution/Ethos.md`'s own prompting questions if they
   want to write a "why" beneath the rules. This is genuinely skippable;
   say so plainly, don't make skipping feel like settling for less.
+- **A one-line mission, optional** — `constitution/Constitution.md`
+  ships with a spot for one ("Article 1"). Ask if they want a single
+  sentence there describing what this system is ultimately in service
+  of; if not, that placeholder line is simply removed rather than left
+  unresolved — an unanswered "optional" is not the same as an unresolved
+  template token.
 
 ## Interview notes
 
@@ -35,8 +41,14 @@ close the module rather than manufacturing a third probe.
 
 ## What gets written
 
-Fill `me/values.md`. Only touch `constitution/Ethos.md` if they actually
-did the optional exercise — otherwise leave it exactly as shipped, blank.
+Fill `me/values.md`. Only touch the **instantiated**
+`{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/Ethos.md` (created at Module 00, not the
+kit's own source file) if they actually did the optional exercise —
+otherwise leave it exactly as shipped, blank. If they gave a mission
+line, replace the `{{YOUR_MISSION}}` placeholder in the same
+instantiated `Constitution.md` with it; if they didn't, delete that
+placeholder line entirely rather than leaving it unresolved (Module 999's
+final sweep would otherwise flag it as an orphaned token).
 
 ## Close
 

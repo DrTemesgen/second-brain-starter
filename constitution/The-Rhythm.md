@@ -1,10 +1,11 @@
 # The Rhythm
 
-<!-- Your personal work cadence, set in onboarding Module 60. This file is
-     read by Claude at session start alongside the Constitution — it's how
-     the system knows when to nudge toward a break instead of just plowing
-     through. Written in first person because it's describing how you work,
-     not a policy about you. -->
+<!-- Your personal work cadence, set in onboarding Module 60. Referenced
+     by CLAUDE.md rule 7 (Wellbeing guardian, only present if you opted
+     in) and read by `home`'s normal-operation check when that rule is
+     active — it's how the system knows when to nudge toward a break
+     instead of just plowing through. Written in first person because
+     it's describing how you work, not a policy about you. -->
 
 **Deep work block:** {{DEEP_WORK_MINUTES}} minutes
 **Break / open window:** {{BREAK_MINUTES}} minutes

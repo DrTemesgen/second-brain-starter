@@ -25,10 +25,15 @@ ones either:
 - Production/live infrastructure — if Module 50 surfaced anything they
   depend on operationally (a live site, a service others use), add a row
   for it and confirm 🟠 at minimum.
-- Money, credentials, account creation, permanent deletion — confirm 🔴
-  (never), and be explicit that this tier can't be lowered no matter how
-  it's framed later, including by them — that's the point of a hard
-  guardrail (Constitution Article 3).
+- Money, credentials, account creation — confirm 🔴 (never), and be
+  explicit that *this* tier can't be lowered no matter how it's framed
+  later, including by them — that's the point of a hard guardrail
+  (Constitution Article 3, which covers exactly these three, not more).
+- Permanent deletion — shipped at 🔴 too, but as a strong *default*, not
+  a constitutional floor like the row above (Article 3 doesn't cover it).
+  If they have a real reason to run it at 🟠 confirm-first instead (still
+  warned every time, per Article 6), that's a legitimate choice — just
+  make sure it's a deliberate one, not a default nobody looked at.
 - **Anything specific to their own work** worth its own row — a
   certification/exam system, regulated client data, anything with its own
   particular risk profile that the shipped default rows don't cover.
@@ -42,11 +47,13 @@ adjust or new rows specific to their situation.
 
 ## What gets written
 
-Update the Tier column in `Autonomy-Ladder.md` for any row they adjusted,
-add any new rows they specified, and set the "Reviewed" date. Only touch
-`Constitution.md` if they want to actually amend an article (rare — most
-adjustments belong in the ladder, not the constitution itself); if so, add
-a line to its amendment log.
+Update the Tier column in the **instantiated**
+`{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/Autonomy-Ladder.md` (created at Module
+00, not the kit's own source file) for any row they adjusted, add any new
+rows they specified, and set the "Reviewed" date. Only touch that same
+instantiated `Constitution.md` if they want to actually amend an article
+(rare — most adjustments belong in the ladder, not the constitution
+itself); if so, add a line to its amendment log.
 
 ## Close
 

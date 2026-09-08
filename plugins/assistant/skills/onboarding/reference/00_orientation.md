@@ -17,9 +17,12 @@ else assumes these answers exist.
    becomes `{{SYSTEM_HOME}}` everywhere else in the kit.
 3. **Their name**, and how they want to be addressed (full name for formal
    contexts, a short form for everyday use).
-4. **Their email** — used only for plugin/manifest authorship fields,
-   never sent anywhere. Say this explicitly; it's a reasonable thing to be
-   cautious about.
+4. **Their email** — used only for the `userEmail` line in their own
+   generated `~/.claude/CLAUDE.md` (so Claude can recognize their own
+   work by it), never sent anywhere and never written into the kit's own
+   plugin/manifest files — those correctly keep the kit author's info,
+   not the installer's (see `docs/ARCHITECTURE.md` if that seems odd).
+   Say this explicitly; it's a reasonable thing to be cautious about.
 5. **Confirm locality.** State plainly: everything from here on stays on
    their machine, in files they own, unless they explicitly ask to send
    something somewhere. This is Constitution Article 5 — worth saying out
@@ -28,12 +31,21 @@ else assumes these answers exist.
 
 ## What gets written
 
-- `systemName`, `systemHome`, `yourName` in `state.json`.
+- `systemName`, `systemHome`, `yourName`, `yourEmail` in `state.json` —
+  all four, not just the first three; the email answer is easy to forget
+  to persist and its only consumer (`CLAUDE.md`'s `userEmail` line) isn't
+  written until Module 999, possibly sessions later.
 - These seed the identity block of the real `~/.claude/CLAUDE.md` that
   Module 999 (Assembly) will generate — don't write `CLAUDE.md` itself
   yet, just capture the answers.
+- The moment this module completes, SKILL.md's "Safety by default" step
+  fires automatically: the blank `me/*.md` templates get copied into
+  `~/.claude/me/`, and the whole constitution folder gets instantiated at
+  `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/`. Nothing in this module needs to
+  trigger that by hand — it's a consequence of `systemHome` now being
+  known, not a separate task.
 
 ## Close
 
-One line: "Got it — building `{{systemName}}` at `{{systemHome}}`. Next:
+One line: "Got it — building `{{SYSTEM_NAME}}` at `{{SYSTEM_HOME}}`. Next:
 your profile." Move to Module 10.

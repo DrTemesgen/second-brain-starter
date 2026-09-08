@@ -1,9 +1,14 @@
 # Module 80 — Agent Roster
 
-Writes `me/agents-guide.md`, and optionally scaffolds new agent `.md` files
-into `plugins/assistant/agents/`. This module builds the user's roster
-live — it does not offer a pre-built menu of specialist agents to pick
-from.
+Writes `me/agents-guide.md`, and optionally scaffolds new agent `.md`
+files into `~/.claude/agents/` — **not** `plugins/assistant/agents/`
+inside the kit. That folder is the *installed plugin's own* agents;
+Claude Code loads agents from `~/.claude/agents/` (or a project's own
+`.claude/agents/`), and a new agent written into the plugin's installed
+copy would vanish on the next plugin update and never actually load in
+the meantime. `~/.claude/agents/` needs no reinstall and is the user's
+own, durable to edit. This module builds the user's roster live — it does
+not offer a pre-built menu of specialist agents to pick from.
 
 ## Why this module doesn't just offer a menu
 
@@ -41,9 +46,8 @@ kit is descended from.
 Fill `me/agents-guide.md`'s roster table with whatever was actually agreed
 on — including a legitimate "none yet, starting with just `writer` and
 `researcher`" as a complete, valid outcome. Only create new files under
-`plugins/assistant/agents/` for agents that were actually specified with a
-real scope and trigger — never scaffold a placeholder agent nobody asked
-for.
+`~/.claude/agents/` for agents that were actually specified with a real
+scope and trigger — never scaffold a placeholder agent nobody asked for.
 
 ## Close
 

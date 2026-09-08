@@ -37,6 +37,13 @@
 <!-- Recurring practices or reviews — not one-off deadlines. e.g. a
      quarterly review cadence, a learning habit, a health target. -->
 
+## Learning ritual
+
+<!-- Populated by onboarding Module 20 — subject + cadence for the
+     opt-in `daily-learning` skill, or "opted out" if you said no. This
+     is the exact section that skill reads to know what to teach and how
+     often; don't rename it without updating that skill too. -->
+
 ## How to use this file
 
 <!-- Session-start protocol: what should Claude do with this file at the

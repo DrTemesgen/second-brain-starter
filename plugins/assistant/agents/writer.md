@@ -32,9 +32,11 @@ personal facts `profile.md` doesn't contain.
 - Apply every banned word/phrase and every universal rule in `voice.md`.
 - Run the piece against the user's stated quality bar before presenting
   it.
-- If the piece is meant for a specific person, check
-  `constitution/People/` for any existing profile on them that should
-  shape tone or content.
+- If the piece is meant for a specific person, check the `People/`
+  subfolder of the constitution folder for any existing profile on them
+  that should shape tone or content — find that folder via
+  `~/.claude/CLAUDE.md` rule 3, not by guessing a relative path (this
+  agent doesn't otherwise know the system's name or home location).
 
 ## Non-negotiable
 

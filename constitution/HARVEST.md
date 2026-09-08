@@ -39,7 +39,7 @@ Paste this at the end of the session:
 > ```
 >
 > Paste the finished summary back to me, or append it directly to
-> `{{SYSTEM_HOME}}/{{SystemName}}/Session-Sync-Log.md`.
+> `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/Session-Sync-Log.md`.
 
 ## What the main session does with it
 

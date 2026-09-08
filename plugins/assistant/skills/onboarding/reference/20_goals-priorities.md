@@ -22,8 +22,10 @@ system afterward — most sessions should open by consulting it.
   boundary.
 - **Opt-in learning ritual** — do they want a recurring "teach me one
   thing" session (feeds the `daily-learning` skill)? If yes, on what
-  subject area? If no, that's a complete answer — don't install the habit
-  by default.
+  subject area, and roughly how often (daily, weekly, "whenever I ask" —
+  the `daily-learning` skill needs both the subject and the cadence, not
+  just the subject)? If no, that's a complete answer — don't install the
+  habit by default.
 - **Session-start protocol** — ask directly: "should Claude read this file
   and flag anything urgent at the start of a session, or would that get
   old fast for you?" People differ on this; don't assume the answer.
@@ -38,7 +40,11 @@ something concrete and personal worth actually writing down.
 
 Fill `me/goals.md` completely, including the "How to use this file"
 section with whatever session-start behavior they actually want (or
-"don't proactively surface anything" if that's their preference).
+"don't proactively surface anything" if that's their preference), and the
+"Learning ritual" section with the subject + cadence, or "opted out" if
+they said no.
+This is the section `daily-learning`'s own SKILL.md reads to know what to
+teach and how often.
 
 ## Close
 

@@ -34,7 +34,7 @@ simpler answer. Don't manufacture multiple registers they don't use.
 
 ## What gets written
 
-Fill `me/voice.md` — one `### {{REGISTER_NAME}}` block per real register
+Fill `me/voice.md` — one `### {{REGISTER_1_NAME}}`-style block (numbered per register: `{{REGISTER_2_NAME}}` and so on) per real register
 they named, universal rules section, canonical bio, and their own
 quality-bar phrasing.
 

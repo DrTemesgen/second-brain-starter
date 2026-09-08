@@ -31,9 +31,11 @@ actual configured defaults rather than just advice read once.
 
 ## What gets written
 
-Fill `{{DEFAULT_MODEL}}` throughout `Dispatch.md`'s routing table.
-Replace `The-Stack.md`'s example rows with their real toolkit — delete
-rows for tools they don't have rather than leaving them as dead examples.
+Both in the **instantiated** copies at `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/`
+(created at Module 00, not the kit's own source files). Fill
+`{{DEFAULT_MODEL}}` throughout `Dispatch.md`'s routing table. Replace
+`The-Stack.md`'s example rows with their real toolkit — delete rows for
+tools they don't have rather than leaving them as dead examples.
 
 ## Close
 

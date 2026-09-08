@@ -24,7 +24,7 @@ Paste this (or a close paraphrase) at the start of the new session:
 > system. Before doing anything else:
 >
 > 1. Read `~/.claude/CLAUDE.md` — the always-on operating rules.
-> 2. Read `{{SYSTEM_HOME}}/{{SystemName}}/Constitution.md` — the guardrails
+> 2. Read `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/Constitution.md` — the guardrails
 >    that govern everything else here. Follow them without exception.
 > 3. Read `{{SYSTEM_HOME}}/Dashboard.md` — what's currently in flight, so
 >    you don't duplicate work or contradict a decision already made.

@@ -34,6 +34,14 @@ In a Claude Code session:
      if either of these doesn't match what your version expects, run
      `/plugin` on its own first; it'll show the current subcommands. -->
 
+**Keep the folder you cloned/unzipped.** Installing the plugin only
+copies `plugins/assistant/` into Claude Code's own plugin store — it does
+**not** copy `me/`, `constitution/`, `bootstrap/`, or `Dashboard.md`.
+Onboarding reads those directly from wherever you put the kit in step 1,
+every time it needs a fresh template. Deleting that folder after
+installing breaks onboarding, even if the plugin still shows as
+installed.
+
 ## 4. Run onboarding
 
 ```
@@ -65,9 +73,21 @@ completed, that's worth fixing by hand or re-running the relevant module.
   manifests for valid JSON — a trailing comma or unescaped character is the
   usual cause.
 - **Onboarding seems to have lost progress:** check
-  `{{systemHome}}/_onboarding/state.json` — it should show which module was
+  `~/.claude/_onboarding/state.json` — it should show which module was
   last in progress. If it's missing entirely, onboarding will just start
   fresh from Module 00; nothing else breaks.
 - **Something references a `{{PLACEHOLDER}}` that never got filled:** most
   likely a module was skipped rather than completed — re-run it, or fill
-  the placeholder by hand.
+  the placeholder by hand. Module 999's own final step sweeps for exactly
+  this, so re-running Assembly (even with everything else already done)
+  is usually enough to catch a stray one.
+- **Onboarding can't find its own templates / asks where you put the kit:**
+  this means it couldn't infer its own location automatically — just tell
+  it the path from step 1. It'll remember (`kitRoot` in `state.json`) and
+  won't ask again. If you moved or deleted that folder, put it back (or
+  re-clone) before continuing.
+- **The credential-sweep hook doesn't seem to be doing anything:** it's a
+  POSIX shell command that needs `jq` on `PATH`. On macOS/Linux this is
+  usually already true; on Windows without Git Bash or WSL it may not be,
+  and the hook fails silently rather than erroring loudly. Install `jq`
+  or run Claude Code through Git Bash/WSL if you want this guard active.

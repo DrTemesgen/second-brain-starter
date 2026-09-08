@@ -23,7 +23,7 @@ Legend: 🟢 Autonomous · 🟡 Draft-only · 🟠 Confirm-first · 🔴 Never
 | Money, payments, financial transfers | 🔴 | Constitution Art. 3 — permanently never |
 | Entering passwords, API keys, credentials anywhere | 🔴 | Constitution Art. 3 — permanently never |
 | Creating accounts on my behalf | 🔴 | |
-| Permanently deleting data (emptying trash, hard-delete) | 🔴 | |
+| Permanently deleting data (emptying trash, hard-delete) | 🔴 | Strong shipped default, not an Article 3 floor — you can deliberately run this at 🟠 instead if you have a real reason (still warned every time, per Art. 6) |
 
 <!-- Add rows for anything specific to your own work — a certification
      system, client data, a codebase with its own deploy risk, whatever

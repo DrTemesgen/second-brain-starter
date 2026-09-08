@@ -9,14 +9,20 @@ onboarding:
 |---|---|---|
 | `~/.claude/CLAUDE.md` | Global always-on rules | `bootstrap/CLAUDE.md` |
 | `~/.claude/me/*.md` | Your dossier (10 files) | `me/*.md` |
-| `{{SYSTEM_HOME}}/Dashboard.md` + `{{SYSTEM_HOME}}/{{SystemName}}/*` | Working dashboard + constitution/ritual layer | `Dashboard.md`, `constitution/*` |
-| Wherever you clone this repo | The installed plugin itself (agents/skills/hooks) | `plugins/assistant/*` |
+| `{{SYSTEM_HOME}}/Dashboard.md` + `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/*` | Working dashboard + constitution/ritual layer | `Dashboard.md`, `constitution/*` |
+| Claude Code's own plugin store (wherever it caches installed plugins) | The installed plugin (agents/skills/hooks) | `plugins/assistant/*` |
+| **Wherever you cloned/unzipped this repo — keep it** | The template *source* itself (`{{KIT_ROOT}}`) — onboarding reads `me/`, `constitution/`, `bootstrap/`, and `Dashboard.md` from here every time it needs a fresh copy | this whole repo |
 
 `~/.claude/` is fixed by Claude Code itself. `{{SYSTEM_HOME}}` is wherever
 you told onboarding Module 00 you want your working dashboard to live — the
-equivalent of "open a folder and talk to Claude." The repo clone can live
-anywhere; only the plugin needs to stay where Claude Code can find it as an
-installed marketplace source.
+equivalent of "open a folder and talk to Claude." **The repo clone is not
+disposable** — installing the plugin only copies `plugins/assistant/`
+into Claude Code's own store; it does not copy `me/`, `constitution/`,
+`bootstrap/`, or `Dashboard.md`. Onboarding locates that clone
+automatically most of the time (it can find its own file's location and
+walk up to the repo root), asking you directly only if that fails — see
+`SKILL.md`'s session-start protocol if you're curious how. Either way,
+deleting the clone after installing breaks onboarding.
 
 ## Why only two starter agents
 

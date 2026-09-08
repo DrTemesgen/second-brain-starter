@@ -1,4 +1,4 @@
-# 🧭 {{SystemName}} — {{YOUR_NAME}}'s HQ
+# 🧭 {{SYSTEM_NAME}} — {{YOUR_NAME}}'s HQ
 
 <!-- Your second brain — kept live by Claude, not a database or kanban
      tool. This is the front page: open it first, every session. Detail
@@ -18,7 +18,7 @@
 
 > This file is your home page. Detail lives in `me/goals.md`,
 > `me/projects.md`, and the rest of `me/` — plus the standing rules and
-> rituals in `{{SystemName}}/` (linked at the bottom of this file).
+> rituals in `{{SYSTEM_NAME}}/` (linked at the bottom of this file).
 
 ## 📍 Right now
 
@@ -53,20 +53,22 @@
      of lines per category, pointing at the real detail rather than
      duplicating it. -->
 
-## 🧠 The Brain — {{SystemName}}'s own rules
+## 🧠 The Brain — {{SYSTEM_NAME}}'s own rules
 
-<!-- A link-list into the constitution folder, one line of description
-     each. -->
+<!-- A link-list into the constitution folder (a subfolder of wherever
+     this Dashboard file itself lives, so these are relative links), one
+     line of description each. -->
 
-- [`Constitution.md`]({{SystemName}}/Constitution.md) — the guardrails everything else follows
-- [`Autonomy-Ladder.md`]({{SystemName}}/Autonomy-Ladder.md) — what's autonomous, draft-only, confirm-first, never
-- [`Dispatch.md`]({{SystemName}}/Dispatch.md) — how work gets routed to the right model/tool
-- [`The-Rhythm.md`]({{SystemName}}/The-Rhythm.md) — your work cadence
-- [`Cost-Control-Guide.md`]({{SystemName}}/Cost-Control-Guide.md) — how to run this economically
-- [`BOOTSTRAP.md`]({{SystemName}}/BOOTSTRAP.md) / [`HARVEST.md`]({{SystemName}}/HARVEST.md) — linking and unlinking a dispatched session
-- [`Session-Sync-Log.md`]({{SystemName}}/Session-Sync-Log.md) — the shared log across sessions
-- [`The-Stack.md`]({{SystemName}}/The-Stack.md) — which tool for which job
-- [`Ethos.md`]({{SystemName}}/Ethos.md) — the why underneath the rules, if you wrote one
+- [`Constitution.md`]({{SYSTEM_NAME}}/Constitution.md) — the guardrails everything else follows
+- [`Autonomy-Ladder.md`]({{SYSTEM_NAME}}/Autonomy-Ladder.md) — what's autonomous, draft-only, confirm-first, never
+- [`Dispatch.md`]({{SYSTEM_NAME}}/Dispatch.md) — how work gets routed to the right model/tool
+- [`The-Rhythm.md`]({{SYSTEM_NAME}}/The-Rhythm.md) — your work cadence
+- [`Cost-Control-Guide.md`]({{SYSTEM_NAME}}/Cost-Control-Guide.md) — how to run this economically
+- [`BOOTSTRAP.md`]({{SYSTEM_NAME}}/BOOTSTRAP.md) / [`HARVEST.md`]({{SYSTEM_NAME}}/HARVEST.md) — linking and unlinking a dispatched session
+- [`Session-Sync-Log.md`]({{SYSTEM_NAME}}/Session-Sync-Log.md) — the shared log across sessions
+- [`The-Stack.md`]({{SYSTEM_NAME}}/The-Stack.md) — which tool for which job
+- [`Ethos.md`]({{SYSTEM_NAME}}/Ethos.md) — the why underneath the rules, if you wrote one
+- [`People/`]({{SYSTEM_NAME}}/People/) — structured notes on people who matter to your work
 
 ## ❤️ Today
 

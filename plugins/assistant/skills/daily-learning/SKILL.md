@@ -11,9 +11,9 @@ description: >-
 # Daily Learning
 
 A short, focused "teach me one thing" session on whatever subject the user
-set up during onboarding (`me/goals.md`'s learning-ritual answer). If that
-answer was "no learning ritual," this skill shouldn't be offered
-proactively — check `me/goals.md` first.
+set up during onboarding — read `~/.claude/me/goals.md`'s `## Learning
+ritual` section for the subject and cadence. If that section says "opted
+out," this skill shouldn't be offered proactively at all.
 
 ## Structure (aim for ~15 minutes of reading, not a lecture)
 

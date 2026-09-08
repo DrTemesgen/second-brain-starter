@@ -33,9 +33,10 @@ past a "no" on the first question.
 
 ## What gets written
 
-`me/health.md` fully, or the short opt-out note. `constitution/The-Rhythm.md`
-only if a real work rhythm was stated — leave the placeholder tokens in
-place otherwise rather than inventing a default.
+`me/health.md` fully, or the short opt-out note. The **instantiated**
+`{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/The-Rhythm.md` (created at Module 00, not
+the kit's own source file) only if a real work rhythm was stated — leave
+the placeholder tokens in place otherwise rather than inventing a default.
 
 ## Close
 
