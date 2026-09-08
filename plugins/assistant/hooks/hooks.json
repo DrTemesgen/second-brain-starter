@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "statusMessage": "Credential-sweep guard",
+            "command": "c=$(jq -r '.tool_input.command // empty'); if echo \"$c\" | grep -qiE '(^|[[:space:];|&(])(find|locate|gci|Get-ChildItem)([[:space:]]|$)' && echo \"$c\" | grep -qiE '(passw|credential|secret|api[-_.]?key|id_rsa|\\.pem)'; then echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"permissionDecision\":\"deny\",\"permissionDecisionReason\":\"BLOCKED: filesystem credential sweep. Scanning broadly for credential files is forbidden - this machine may hold sensitive personal or client data. If you genuinely need a specific credential file, name its exact path; never scan for them.\"}}'; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

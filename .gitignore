@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Local-only scratch — anything you want to keep off git entirely, ever
+_local/
+_scratch/
+
+# Claude Code runtime (never meant to be versioned)
+.claude/cache/
+.claude/shell-snapshots/

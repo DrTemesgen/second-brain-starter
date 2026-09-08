@@ -1,0 +1,13 @@
+{
+  "name": "assistant",
+  "version": "1.0.0",
+  "description": "A personal AI operating system: onboarding/home/daily-learning skills; writer and researcher agents; a credential-sweep PreToolUse guard.",
+  "author": {
+    "name": "{{YOUR_NAME}}",
+    "email": "{{YOUR_EMAIL}}"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME",
+  "repository": "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME",
+  "license": "MIT",
+  "keywords": ["personal", "second-brain", "productivity", "onboarding"]
+}

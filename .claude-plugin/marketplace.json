@@ -1,0 +1,19 @@
+{
+  "name": "second-brain-starter",
+  "owner": {
+    "name": "{{YOUR_NAME}}",
+    "email": "{{YOUR_EMAIL}}"
+  },
+  "metadata": {
+    "description": "A private, personal Claude Code marketplace — your own second-brain layer, built from the second-brain-starter kit."
+  },
+  "plugins": [
+    {
+      "name": "assistant",
+      "source": "./plugins/assistant",
+      "description": "Personal second-brain layer: onboarding interview, home/front-door skill, daily-learning skill, writer/researcher agents, and a credential-sweep Bash guard.",
+      "category": "productivity",
+      "license": "MIT"
+    }
+  ]
+}
