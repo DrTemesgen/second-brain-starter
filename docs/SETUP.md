@@ -3,7 +3,7 @@
 ## 1. Get the files onto your machine
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME second-brain-starter
+git clone https://github.com/DrTemesgen/second-brain-starter
 cd second-brain-starter
 ```
 

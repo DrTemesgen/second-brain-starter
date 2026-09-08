@@ -1,11 +1,11 @@
 {
   "name": "second-brain-starter",
   "owner": {
-    "name": "{{YOUR_NAME}}",
-    "email": "{{YOUR_EMAIL}}"
+    "name": "Dr. Temesgen Endalew",
+    "email": "dolce.temesgen@gmail.com"
   },
   "metadata": {
-    "description": "A private, personal Claude Code marketplace — your own second-brain layer, built from the second-brain-starter kit."
+    "description": "second-brain-starter: a generic, reusable Claude Code personal-OS starter kit — constitution, autonomy ladder, dossier schema, and a self-serve onboarding interview that builds your own copy."
   },
   "plugins": [
     {
