@@ -22,9 +22,11 @@ actually ship with is not.
 **Expected, allowed hits — not a leak:** the kit's own author-attribution
 fields are supposed to carry his real name/email (see
 `docs/ARCHITECTURE.md` and Module 00's own explanation of why) — that's
-`plugin.json`, `marketplace.json`, `LICENSE`, and the clone URL in
-`docs/SETUP.md`. Exactly those four, for the name sweep; just the two
-manifests for the email sweeps. This checklist file is excluded from the
+`plugin.json`, `marketplace.json`, and `LICENSE`. Exactly those three,
+for the name sweep; just the two manifests for the email sweeps. The
+GitHub handle of the maintainer (`zawefrew1982-En`) is expected too, in
+the clone URL in `docs/SETUP.md` and the homepage/repository links in
+`plugin.json`. This checklist file is excluded from the
 sweeps below because it quotes the very patterns it searches for — with
 that exclusion in place, a clean run really does mean zero unexpected
 matches.
@@ -40,7 +42,7 @@ matches.
 >    Every command below is written without it, and every one was run
 >    against this repo before being written down.
 > 2. **rg skips hidden directories by default**, so without `--hidden`
->    it never scans `.claude-plugin/` — two of the four files you're
+>    it never scans `.claude-plugin/` — two of the three files you're
 >    told to expect hits in. `--hidden` is included below, along with a
 >    `.git` exclusion so commit metadata (which legitimately contains the
 >    author's name and email) doesn't drown the results.
@@ -60,7 +62,7 @@ pattern broken that way looks like a passing sweep in both directions.
 ```bash
 EXCL="--glob=!docs/VERIFICATION-CHECKLIST.md --glob=!.git"
 
-# Author's name — expected ONLY in LICENSE, SETUP.md, and the 2 manifests
+# Author's name — expected ONLY in LICENSE and the 2 manifests
 rg -i --hidden $EXCL 'temesgen|endalew|legesse|drtemesgen'
 
 # The originating system's own name — everything should say
