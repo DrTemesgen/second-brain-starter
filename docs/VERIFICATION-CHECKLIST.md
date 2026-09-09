@@ -126,7 +126,7 @@ its own blind spots rather than genuinely re-verifying.
 
 - [ ] `claude plugin validate` passes on both the repo root and the
       plugin folder.
-- [ ] Installed fresh in a scratch directory, `/home` correctly detects
+- [ ] Installed fresh in a scratch directory, `/assistant:home` correctly detects
       the empty dossier and offers onboarding.
 - [ ] Onboarding Module 00 runs a few real turns without error, writes
       `~/.claude/_onboarding/state.json` correctly (including `kitRoot`,

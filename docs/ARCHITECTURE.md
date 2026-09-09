@@ -86,7 +86,13 @@ with plain, boring names on purpose — your system's actual personal name
 lives in `Dashboard.md` and `CLAUDE.md` prose, not in a slash-command
 slug, so nothing about how the system *works* depends on these names.
 
-If you still want to rename them (e.g. `/onboarding` → `/get-started`):
+The `assistant:` prefix on every slash command is the plugin namespace:
+Claude Code always exposes plugin skills as `/<plugin-name>:<skill-name>`,
+taking the plugin name from `plugins/assistant/.claude-plugin/plugin.json`.
+Rename the plugin and the prefix changes with it; rename a skill and only
+the part after the colon does.
+
+If you still want to rename them (e.g. `/assistant:onboarding` → `/assistant:get-started`):
 
 1. Rename the corresponding folder under `plugins/assistant/skills/` or
    `plugins/assistant/agents/`.

@@ -36,6 +36,17 @@ In a Claude Code session:
 /plugin install assistant@second-brain-starter
 ```
 
+The install command opens the plugin's details and asks for a scope —
+pick **User** so it's available in every project. The install summary
+then ends with either `Plugin is now active.` or `Run /reload-plugins to
+activate.`; if it's the latter, run `/reload-plugins` before going on
+(add `--force` if it warns about re-reading the conversation).
+
+The same two steps also work from a terminal, as
+`claude plugin marketplace add <path>` and
+`claude plugin install assistant@second-brain-starter`; plugins installed
+that way load the next time Claude Code starts.
+
 <!-- Exact command names/flags can drift between Claude Code versions —
      if either of these doesn't match what your version expects, run
      `/plugin` on its own first; it'll show the current subcommands. -->
@@ -48,11 +59,41 @@ every time it needs a fresh template. Deleting that folder after
 installing breaks onboarding, even if the plugin still shows as
 installed.
 
+### Using the Claude desktop app instead of the terminal?
+
+The `/plugin` panel is a terminal-CLI feature. The desktop app's plugin
+browser (**+** next to the prompt box → **Plugins** → **Add plugin**)
+only lists marketplaces that are already registered, so register this
+folder first by adding it to `~/.claude/settings.json` (create the file
+if it doesn't exist), with the real absolute path — forward slashes are
+fine on Windows too:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "second-brain-starter": {
+      "source": { "source": "directory", "path": "/absolute/path/to/second-brain-starter" }
+    }
+  }
+}
+```
+
+Restart the app, then install `assistant` from the plugin browser at
+User scope. This route is taken from the official Claude Code docs but
+hasn't been verified end-to-end by this kit's author yet — if it doesn't
+work for you, the terminal route above is the known-good path.
+
 ## 4. Run onboarding
 
 ```
-/home
+/assistant:home
 ```
+
+Every skill in this kit is invoked with the plugin's name as a prefix —
+`/assistant:home`, `/assistant:verify`, and so on — because Claude Code
+namespaces plugin skills that way; bare `/home` won't be recognized.
+Typing `/assistant` shows the full list. Plain language usually reaches
+the same skill too ("what's next", "set me up").
 
 On a fresh install, `home` detects nothing's configured yet and offers to
 start the onboarding interview. Say yes, and work through it at your own
@@ -85,12 +126,16 @@ After onboarding finishes, check:
 
 If anything still shows a `{{PLACEHOLDER}}` token after onboarding
 completed, that's worth fixing by hand or re-running the relevant module.
-**Easiest way to check all of the above at once: ask to `/verify`** — it
-does exactly these checks, knows which leftover tokens are correct by
-design, and doesn't change anything.
+**Easiest way to check all of the above at once: run `/assistant:verify`**
+— it does exactly these checks, knows which leftover tokens are correct
+by design, and doesn't change anything.
 
 ## Troubleshooting
 
+- **`/home` (or `/verify`) isn't recognized:** plugin skills are
+  namespaced — use `/assistant:home` and `/assistant:verify`. If even
+  those are missing, the plugin isn't active yet: run `/reload-plugins`,
+  or check the **Errors** tab of `/plugin`.
 - **Plugin won't load / validate fails:** check the two `.claude-plugin/*.json`
   manifests for valid JSON — a trailing comma or unescaped character is the
   usual cause.
@@ -99,12 +144,12 @@ design, and doesn't change anything.
   last in progress. If it's missing entirely, onboarding will just start
   fresh from Module 00; nothing else breaks.
 - **Something references a `{{PLACEHOLDER}}` that never got filled:**
-  ask to `/verify` first — it's a quick, read-only check that tells you
-  exactly what's unresolved and which module owns it, without re-running
-  anything. Then re-run that specific module, or fill the placeholder by
-  hand. (Re-running the whole of Assembly also works and is safe to do —
-  it checks for existing files before touching anything — but `verify`
-  is faster for just checking.)
+  run `/assistant:verify` first — it's a quick, read-only check that tells
+  you exactly what's unresolved and which module owns it, without
+  re-running anything. Then re-run that specific module, or fill the
+  placeholder by hand. (Re-running the whole of Assembly also works and is
+  safe to do — it checks for existing files before touching anything — but
+  `verify` is faster for just checking.)
 - **Onboarding can't find its own templates / asks where you put the kit:**
   this means it couldn't infer its own location automatically — just tell
   it the path from step 1. It'll remember (`kitRoot` in `state.json`) and

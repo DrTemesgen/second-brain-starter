@@ -50,9 +50,9 @@ need.
 do?**
 It means the module that fills that value either hasn't run yet or was
 skipped. Check `docs/SETUP.md`'s troubleshooting section, or just ask to
-`/verify` — it does exactly this check without re-running anything.
+`/assistant:verify` — it does exactly this check without re-running anything.
 
 **How do I know if setup actually worked, without going file-hunting?**
-Run the `verify` skill — it's read-only, checks the dossier/constitution/
+Run the `verify` skill (`/assistant:verify`) — it's read-only, checks the dossier/constitution/
 CLAUDE.md for anything unresolved, and reports in a few lines. Safe to
 run any time, as often as you want.

@@ -3,7 +3,7 @@
 <!-- This is the routing doc: how work gets from "an idea you said out loud"
      to "the right model, the right tool, running in the right place" without
      you having to make that call from scratch every time. Your main session
-     (wherever you run `/home`) is the control tower — this file is how it
+     (wherever you run `/assistant:home`) is the control tower — this file is how it
      thinks about routing. -->
 
 ## The loop
