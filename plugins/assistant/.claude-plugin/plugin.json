@@ -1,6 +1,6 @@
 {
   "name": "assistant",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A personal AI operating system: onboarding/home/daily-learning/verify skills; writer and researcher agents; a credential-sweep PreToolUse guard.",
   "author": {
     "name": "Dr. Temesgen Endalew",

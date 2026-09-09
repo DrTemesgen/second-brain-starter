@@ -23,55 +23,84 @@ actually ship with is not.
 fields are supposed to carry his real name/email (see
 `docs/ARCHITECTURE.md` and Module 00's own explanation of why) — that's
 `plugin.json`, `marketplace.json`, `LICENSE`, and the clone URL in
-`docs/SETUP.md`. **This checklist file itself is also an expected hit**
-for the name/org/contact sweeps below, since it necessarily quotes the
-patterns it searches for — that's not a fifth leak, it's the file
-matching its own regex. The commands below exclude this file so a clean
-run really does mean zero matches; if you run the patterns some other
-way, expect this file to show up and don't count it.
+`docs/SETUP.md`. Exactly those four, for the name sweep; just the two
+manifests for the email sweeps. This checklist file is excluded from the
+sweeps below because it quotes the very patterns it searches for — with
+that exclusion in place, a clean run really does mean zero unexpected
+matches.
+
+> **Read this before trusting a clean run.** Two failure modes make these
+> commands *look* like they passed when they didn't actually run:
+>
+> 1. **`-E` is not "extended regex" in ripgrep — it's `--encoding`.**
+>    `rg -iE "pattern"` fails with `unknown encoding: pattern`, exit
+>    code 2, **and prints nothing** — indistinguishable from a clean
+>    result at a glance. (rg's default syntax already supports
+>    alternation, `\b`, and character classes, so no `-E` is needed.)
+>    Every command below is written without it, and every one was run
+>    against this repo before being written down.
+> 2. **rg skips hidden directories by default**, so without `--hidden`
+>    it never scans `.claude-plugin/` — two of the four files you're
+>    told to expect hits in. `--hidden` is included below, along with a
+>    `.git` exclusion so commit metadata (which legitimately contains the
+>    author's name and email) doesn't drown the results.
+>
+> **Always check the exit code, not just the output:** `0` = matches
+> found, `1` = clean, `2` = the command errored and told you nothing.
 
 ## Grep sweep
 
-Run from the repo root, case-insensitive (`rg -i` shown, with this file
-excluded via `--glob`; if your grep doesn't support that flag, pipe
-through `| grep -v VERIFICATION-CHECKLIST` instead — same effect). Every
-one of these should return **no matches outside the four
-author-attribution files named above**:
+Run from the repo root:
+
+Patterns are **single-quoted throughout, deliberately.** In double quotes
+bash eats `$` and mangles backslash runs — `"\\\$[0-9]"` silently becomes
+the pattern `\\-9`, which matches "60-90 minutes" and misses `$10M`. A
+pattern broken that way looks like a passing sweep in both directions.
 
 ```bash
-EXCL="--glob=!docs/VERIFICATION-CHECKLIST.md"
+EXCL="--glob=!docs/VERIFICATION-CHECKLIST.md --glob=!.git"
 
-# Author's name — expected ONLY in plugin.json, marketplace.json, LICENSE
-rg -i $EXCL "temesgen|endalew|legesse|drtemesgen"
+# Author's name — expected ONLY in LICENSE, SETUP.md, and the 2 manifests
+rg -i --hidden $EXCL 'temesgen|endalew|legesse|drtemesgen'
 
-# The originating system's own name — everything here should say
-# {{SYSTEM_NAME}}, never a specific chosen name
-rg -i $EXCL "\belroi\b"
+# The originating system's own name — everything should say
+# {{SYSTEM_NAME}}, never a specific chosen name. Expect zero.
+rg -i --hidden $EXCL '\belroi\b'
 
-# Contact info — expected ONLY in plugin.json, marketplace.json
-rg -iE $EXCL "dolce\.temesgen@gmail\.com|@aslm\.org|@sphmmc\.edu\.et"
-rg -iE $EXCL "\+251[ -]?9"
+# Contact info — expected ONLY in the 2 manifests
+rg -i --hidden $EXCL 'dolce\.temesgen@gmail\.com|@aslm\.org|@sphmmc\.edu\.et'
+rg -i --hidden $EXCL '\+251[ -]?9'                        # expect zero
 
-# Named organizations — no legitimate hit anywhere, including this file
-rg -iE $EXCL "\bASLM\b|\bADHA\b|\bADHN\b|\bSPHMMC\b|Africa CDC|\bMERQ\b|\bBBI\b"
+# Named organizations — expect zero
+rg -i --hidden $EXCL '\bASLM\b|\bADHA\b|\bADHN\b|\bSPHMMC\b|Africa CDC|\bMERQ\b|\bBBI\b'
 
-# Specific figures that shouldn't be live defaults anywhere
-rg -noE "\$[0-9][0-9,.]*[kKmM]?" $EXCL   # spot-check every hit by hand
-rg -iE $EXCL "[0-9]{1,3},?[0-9]{3}\+? (followers|learners|countries|seats)"
+# Specific figures that shouldn't be live defaults — spot-check by hand.
+# `[$]` as a character class, not `\$` — no escaping to get wrong.
+rg -n --hidden $EXCL '[$][0-9][0-9,.]*[kKmM]?'
+rg -i --hidden $EXCL '[0-9]{1,3},?[0-9]{3}\+? (followers|learners|countries|seats)'
 
-# Filesystem paths specific to one machine/person
-rg -iE $EXCL "D:\\\\HQ|D:\\\\ASLM|D:\\\\Noochi|C:\\\\Users\\\\[a-z]+"
+# Filesystem paths specific to one machine/person — expect zero.
+# `.` stands in for the path separator on purpose; a literal backslash
+# has to survive both shell and regex parsing and errors out instead
+# (exit 2, silent).
+rg -i --hidden $EXCL 'D:.(HQ|ASLM|Noochi)|C:.Users.[a-z]+'
 
-# Infrastructure that should never travel between machines
-rg -iE "([0-9]{1,3}\.){3}[0-9]{1,3}"    # spot-check every IP hit by hand
-rg -iE "ssh\s+[a-z0-9_-]+@"
+# Infrastructure that should never travel between machines — expect zero
+rg --hidden $EXCL '([0-9]{1,3}\.){3}[0-9]{1,3}'
+rg -i --hidden $EXCL 'ssh\s+[a-z0-9_-]+@'
 
-# General secret/PII hygiene (reuses common sanitizer patterns) —
-# expected ONLY the author's gmail in the two files named above
-rg -iE "[a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)"
-rg -iE "-----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----"
-rg -iE $EXCL "(api|access)[_-]?key|secret[_-]?key"
+# General secret/PII hygiene — email expected ONLY in the 2 manifests,
+# the other two expect zero
+rg -i --hidden $EXCL '[a-zA-Z0-9._%+-]+@(gmail|yahoo|hotmail|outlook|protonmail|icloud)\.(com|net|org)'
+rg -i --hidden $EXCL -- '-----BEGIN\s+(RSA\s+|EC\s+|DSA\s+|OPENSSH\s+)?PRIVATE KEY-----'
+rg -i --hidden $EXCL '(api|access)[_-]?key|secret[_-]?key'
 ```
+
+**Before trusting any pattern you add or change yourself, prove it can
+actually match.** Drop a line containing the thing you're hunting into a
+scratch file and confirm the pattern finds it — a regex that silently
+matches nothing looks identical to a clean repo. That failure is exactly
+how a broken sweep survived two review rounds here.
 
 Run this from a **fresh context** if you're the one who authored or edited
 the content — a session that just wrote the content is prone to checking

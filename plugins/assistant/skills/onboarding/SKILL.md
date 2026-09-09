@@ -186,10 +186,11 @@ done (not just "not explicitly skipped") before generating the final
 }
 ```
 
-`sensitiveDataCategories` is written by Module 50 (feeds `CLAUDE.md` rule
-9 at Module 999) — any field a module introduces along the way belongs in
-this schema too; don't let a reference file invent a `state.json` field
-this section doesn't document.
+`sensitiveDataCategories` and `seeksFunding` are both written by Module
+50 — the first feeds `CLAUDE.md` rule 9 at Module 999, the second decides
+whether the Dashboard gets a "Funding & partnerships" section. Any field
+a module introduces along the way belongs in this schema too; don't let a
+reference file invent a `state.json` field this section doesn't document.
 
 `kitRoot` is written the moment step 2 of the session-start protocol
 resolves it — before Module 00's questions even begin — precisely because
@@ -218,15 +219,17 @@ as still in progress.
   exists when Module 999 runs, offer to merge or append — never overwrite
   without asking (Constitution Article 6, once the constitution is live).
 - **Auto-renaming plugin/skill slugs.** The default slugs (`assistant`,
-  `home`, `onboarding`, `writer`, `researcher`) work correctly unrenamed
-  forever. Renaming folders, manifests, and git history from inside a
-  first-run session is real blast radius for zero functional benefit — see
+  `home`, `onboarding`, `daily-learning`, `verify`, `writer`,
+  `researcher`) work correctly unrenamed forever. Renaming folders,
+  manifests, and git history from inside a first-run session is real
+  blast radius for zero functional benefit — see
   `{{KIT_ROOT}}/docs/ARCHITECTURE.md` if the user wants to do this later,
   by hand.
 - **Leaving `{{PLACEHOLDER}}` tokens unresolved in generated files.**
-  Module 999's final sweep step exists specifically to catch these —
-  don't skip it, and don't invent a value for a token whose owning module
-  was skipped; report it instead.
+  Module 999's final sweep step catches these across the scope it
+  defines — don't skip it, and don't invent a value for a token whose
+  owning module was skipped or declined; report it instead. (The
+  `verify` skill re-runs that same check on demand afterward.)
 
 ## Related files
 

@@ -73,36 +73,45 @@ edits or a live constitution answer.
    files present, and note anything that still shows shipped defaults
    because its module was skipped (that's correct, not a bug).
 
-5. **Sweep for unresolved `{{...}}` tokens — narrowly, not everywhere.**
-   Scope this to exactly: `~/.claude/CLAUDE.md`, `{{SYSTEM_HOME}}/Dashboard.md`,
-   and — inside `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/` — only
-   `Constitution.md`, `BOOTSTRAP.md`, and `HARVEST.md` (their
-   `{{YOUR_NAME}}`, `{{SYSTEM_NAME}}`, `{{SYSTEM_HOME}}`, `{{DATE}}`,
-   `{{YOUR_MISSION}}` tokens are the ones easy to miss individually, and
-   these three are the only constitution files with no other owning
-   module). Fill every token you can resolve from `state.json` or
-   today's date; if `{{YOUR_MISSION}}` was never given, remove it cleanly
-   rather than guessing.
+5. **Sweep for unresolved `{{...}}` tokens.** <a id="sweep-scope"></a>
+   **THE SWEEP SCOPE — the `verify` skill uses this identical definition;
+   if you change it here, change it there too, or the two will disagree
+   about what "clean" means:**
 
-   **Do not sweep, and do not touch, any of these — each has its own
-   correct handling elsewhere, and a generic sweep would corrupt them:**
+   *In scope:* `~/.claude/CLAUDE.md`; every `~/.claude/me/*.md` **except
+   `feedback.md`**; `{{SYSTEM_HOME}}/Dashboard.md`; and every `*.md`
+   directly inside `{{SYSTEM_HOME}}/{{SYSTEM_NAME}}/` **except the
+   `People/` subfolder**.
+
+   *Permanently out of scope — a generic sweep would corrupt these:*
    - `me/feedback.md` — its `{{DATE}}` / `{{LOVE / AVOID / TREND / RULE}}`
      tokens are a permanent entry-format template for future log entries,
-     not a value to fill in now. No module ever writes this file at
-     initial setup; that's correct, not incomplete.
+     not values to fill in now. No module writes this file at initial
+     setup; that's correct, not incomplete.
    - `constitution/People/*.md` — permanent stencils meant to be copied
-     per-person later, per their own `_README.md`. Never resolve or
-     strip their tokens.
-   - Any `{{...}}` token in a constitution file whose owning module
-     (60, 100) was skipped or left it deliberately — e.g. `The-Rhythm.md`
-     if Module 60 declined, or `Dispatch.md`'s `{{DEFAULT_MODEL}}` /
-     `The-Stack.md`'s example-tool tokens if Module 100 was skipped. Each
-     of those modules already gives the correct instruction for its own
-     tokens ("leave the placeholder tokens in place" for The-Rhythm,
-     "delete rows for tools they don't have" for The-Stack) — defer to
-     that, don't overrule it with a blanket strip-or-fill pass. Note
-     these in the completion report as "still open, from a skipped
-     module" rather than resolving them yourself.
+     per-person later, per their own `_README.md`. Never resolve or strip
+     their tokens.
+
+   *In scope, but reported rather than resolved:* any token whose owning
+   module didn't produce a value — because it was skipped **or because it
+   was completed and the person declined the feature** (step 1's
+   completed-vs-declined check is what tells these apart; a declined
+   Module 60 is `completed`, not `skipped`, and its `The-Rhythm.md`
+   tokens are deliberately left). Examples: `The-Rhythm.md`'s five tokens
+   (Module 60), `Dispatch.md`'s `{{DEFAULT_MODEL}}` and `The-Stack.md`'s
+   example-tool tokens (Module 100). Each of those modules already gives
+   the correct instruction for its own tokens ("leave the placeholder
+   tokens in place" for The-Rhythm, "delete rows for tools they don't
+   have" for The-Stack) — defer to that, don't overrule it with a blanket
+   strip-or-fill pass. List them in the completion report as "still open,
+   from a module that was skipped or declined."
+
+   Everything else in scope: fill from `state.json` or today's date. If
+   `{{YOUR_MISSION}}` was never given, remove it cleanly rather than
+   guessing. `Constitution.md`, `BOOTSTRAP.md`, and `HARVEST.md` deserve
+   particular attention — their identity/path tokens are the easiest to
+   miss by eye, and `Autonomy-Ladder.md`'s `{{DATE}}` is easy to leave
+   behind if Module 110 didn't set the Reviewed date itself.
 
 6. **Print a complete "what got built, where" summary** — every file
    created or updated, as a full path, plus anything flagged unresolved

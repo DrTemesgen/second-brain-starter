@@ -73,16 +73,21 @@ After onboarding finishes, check:
 
 - `~/.claude/CLAUDE.md` exists and reflects your real answers (not
   placeholder tokens).
-- `~/.claude/me/*.md` — most of the 10 files should have real content;
-  two are correctly *not* filled by onboarding itself and that's not a
-  failure: `feedback.md` starts empty and fills in as you actually give
-  feedback later, and `agents-guide.md` can legitimately say "none yet"
-  if Module 80 didn't build a custom roster.
+- `~/.claude/me/*.md` — most of the 10 files should have real content.
+  Three exceptions are correct, not failures: `feedback.md` stays a bare
+  template until you actually give feedback (no module fills it at
+  setup); `health.md` and `finance.md` hold just a short opt-out note or
+  the shipped placeholder if you declined or skipped those modules; and
+  `agents-guide.md` is filled by Module 80 but may legitimately record
+  "none yet" as your roster.
 - Your system home (wherever you said it should live) has a real
   `Dashboard.md` and a constitution folder with your actual settings.
 
 If anything still shows a `{{PLACEHOLDER}}` token after onboarding
 completed, that's worth fixing by hand or re-running the relevant module.
+**Easiest way to check all of the above at once: ask to `/verify`** — it
+does exactly these checks, knows which leftover tokens are correct by
+design, and doesn't change anything.
 
 ## Troubleshooting
 

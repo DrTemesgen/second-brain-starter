@@ -41,8 +41,12 @@
 
 <!-- Populated by onboarding Module 20 — subject + cadence for the
      opt-in `daily-learning` skill, or "opted out" if you said no. This
-     is the exact section that skill reads to know what to teach and how
-     often; don't rename it without updating that skill too. -->
+     section does double duty: the skill reads the top of it to know what
+     to teach and how often, and appends a one-line dated entry here per
+     session so there's a visible record over time. Onboarding's Assembly
+     step also reads it to tell "declined the ritual" apart from "module
+     never ran." Don't rename it without updating `daily-learning` and
+     `999_assembly.md` too. -->
 
 ## How to use this file
 
