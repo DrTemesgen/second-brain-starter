@@ -89,8 +89,56 @@ completed, that's worth fixing by hand or re-running the relevant module.
 does exactly these checks, knows which leftover tokens are correct by
 design, and doesn't change anything.
 
+## 6. Taking an update later
+
+If you installed this and the kit later gains fixes, **a `git pull` on its
+own is not enough** — and it fails quietly, which is the dangerous part.
+Pulling refreshes the templates onboarding reads live (`me/`,
+`constitution/`, `bootstrap/`, `Dashboard.md`, `docs/`), but the skills
+that actually run — `onboarding`, `home`, `daily-learning`, `verify` —
+were **copied** into Claude Code's own plugin store when you installed.
+That copy doesn't change when you pull. You'd see new commits arrive and
+keep running the old skills, with no error to tell you.
+
+Both steps, from the folder you cloned in step 1:
+
+```bash
+git pull
+claude plugin update assistant@second-brain-starter
+```
+
+Then **restart Claude Code** — the update command says so itself, and the
+new version isn't live until you do.
+
+Use the marketplace name you actually added in step 3 if you changed it;
+`claude plugin list` will show you the exact `plugin@marketplace` id.
+
+**Your own content is safe.** An update replaces the kit's skills and
+templates, never the files onboarding generated for you — your
+`~/.claude/CLAUDE.md`, your `~/.claude/me/*.md`, your `Dashboard.md` and
+your constitution folder are all outside the plugin and are left exactly
+as they are. Updating mid-interview is fine too: progress lives in
+`~/.claude/_onboarding/state.json`, which an update doesn't touch.
+
+**Confirm it actually landed** rather than trusting the message:
+
+```bash
+claude plugin list
+```
+
+The version shown should match `version` in
+`plugins/assistant/.claude-plugin/plugin.json`. If `update` reports
+"already up to date" but you can see the source folder has changed, it's
+comparing version numbers — a release that changed files without bumping
+`version` looks identical to it. Uninstall and reinstall in that case.
+
 ## Troubleshooting
 
+- **You pulled an update but nothing changed / a documented skill is
+  missing:** the installed plugin copy is still the old one. See
+  "Taking an update later" above — you need `claude plugin update` as
+  well as `git pull`, then a restart. This is the most likely cause of
+  "the docs mention `/verify` but I don't have it."
 - **Plugin won't load / validate fails:** check the two `.claude-plugin/*.json`
   manifests for valid JSON — a trailing comma or unescaped character is the
   usual cause.

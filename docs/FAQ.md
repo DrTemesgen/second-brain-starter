@@ -16,6 +16,17 @@ Yes. Every module is skippable; Finance and the optional Ethos exercise are
 explicitly flagged as fine to skip before they even start. A skip is a
 complete, valid outcome — the rest of the system works fine around a gap.
 
+**How do I get fixes to the kit itself?**
+
+Two commands, not one — `git pull` in the kit folder, then
+`claude plugin update assistant@second-brain-starter`, then restart
+Claude Code. Pulling on its own refreshes the templates but leaves the
+installed skills at the version you first installed, with no error to
+warn you. Your own generated files (`CLAUDE.md`, `me/*.md`,
+`Dashboard.md`, your constitution folder) and any onboarding progress
+are never touched by an update. Full detail in
+[`SETUP.md`](SETUP.md#6-taking-an-update-later).
+
 **Can I re-run a module later?**
 Yes — values, voice, and goals especially tend to drift over time. Ask to
 re-run any specific module by name (or number) whenever you want.

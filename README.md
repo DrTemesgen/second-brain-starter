@@ -20,6 +20,7 @@ This is a **starter kit**, not a finished product. Everything in it ships empty 
 3. **Run `/home`** in a Claude Code session. On first run, it'll notice nothing's configured yet and offer to start onboarding.
 4. **Answer honestly, skip what you want to skip** (Finance especially is explicitly optional) — you can pause anytime and pick up later; progress is saved to disk, not lost when you close the terminal.
 5. Once onboarding finishes, `~/.claude/CLAUDE.md`, `~/.claude/me/*.md`, your `Dashboard.md`, and your own constitution folder are all real, filled-in files — read through them, adjust anything by hand, and start using it.
+6. **If this kit later gains fixes, take them with `git pull` *and* `claude plugin update assistant@second-brain-starter`, then restart** — pulling alone leaves the installed skills stale and says nothing about it. Details in [`docs/SETUP.md`](docs/SETUP.md).
 
 ## Before you commit anything real
 
